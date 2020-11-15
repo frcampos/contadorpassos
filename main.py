@@ -13,7 +13,6 @@ input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_button_pressed_b():
     radio.send_number(temperaturaMaximaregistada)
-     radio.send_number()
 
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
@@ -39,6 +38,7 @@ input.on_button_pressed(Button.AB, on_button_pressed_ab)
 # Visualização de símbolo para verificação inicial.
 
 temperaturaMaximaregistada = -5
+temperaturaReal = -5
 passos = 0
 passosdados = 0
 radio.set_group(1)
@@ -49,7 +49,7 @@ basic.pause(1000)
 basic.clear_screen()
 
 def on_forever():
-    global  temperaturaMaximaregistada,  temperaturaReal
+    global  temperaturaMaximaregistada, temperaturaReal
     temperaturaReal = input.temperature()
     basic.show_number(temperaturaReal)
     temperaturaMaximaregistada = max(temperaturaMaximaregistada, temperaturaReal)
