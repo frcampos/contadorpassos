@@ -18,10 +18,14 @@ input.onButtonPressed(Button.AB, function () {
     passosdados = 0
     passos = 0
 })
+// Definido grupo de radio para 1 de forma a sincronizar apenas com esse grupo Radio.
+// Inicialização de variáveis globais.
+// Visualização de símbolo para verificação inicial.
 let passos = 0
 let passosdados = 0
 radio.setGroup(1)
 passosdados = 0
+passos = 0
 basic.showIcon(IconNames.Yes)
 basic.pause(1000)
 basic.clearScreen()
