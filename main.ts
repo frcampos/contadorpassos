@@ -18,6 +18,11 @@ input.onGesture(Gesture.Shake, function () {
 input.onButtonPressed(Button.AB, function () {
     passosdados = 0
     passos = 0
+    // Definido grupo de radio para 1 de forma a sincronizar apenas com esse grupo Radio.
+    // Inicialização de variáveis globais.
+    // Visualização de símbolo para verificação inicial.
+    temperaturaMaximaregistada = -5
+    temperaturaReal = -5
 })
 radio.onReceivedString(function (receivedString) {
     radio.setGroup(1)
@@ -39,21 +44,21 @@ input.onButtonPressed(Button.B, function () {
 })
 let passos = 0
 let passosdados = 0
+let temperaturaReal = 0
 let temperaturaMaximaregistada = 0
 // Definido grupo de radio para 1 de forma a sincronizar apenas com esse grupo Radio.
 // Inicialização de variáveis globais.
 // Visualização de símbolo para verificação inicial.
 temperaturaMaximaregistada = -5
-let temperaturaReal = -5
+temperaturaReal = -5
 radio.setGroup(1)
 passosdados = 0
 passos = 0
 basic.showIcon(IconNames.Yes)
-basic.pause(1000)
+basic.pause(200)
 basic.clearScreen()
 basic.forever(function () {
     temperaturaReal = input.temperature()
-    basic.showNumber(temperaturaReal)
     temperaturaMaximaregistada = Math.max(temperaturaMaximaregistada, temperaturaReal)
-    basic.pause(1500)
+    basic.pause(100)
 })
