@@ -4,6 +4,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 // Transmite Passos para o outro microbit
 input.onButtonPressed(Button.A, function () {
+    radio.setGroup(1)
     radio.sendString("P")
     radio.sendNumber(passosdados)
 })
@@ -18,24 +19,17 @@ input.onGesture(Gesture.Shake, function () {
 input.onButtonPressed(Button.AB, function () {
     passosdados = 0
     passos = 0
-    // Definido grupo de radio para 1 de forma a sincronizar apenas com esse grupo Radio.
-    // Inicialização de variáveis globais.
-    // Visualização de símbolo para verificação inicial.
-    temperaturaMaximaregistada = -5
-    temperaturaReal = -5
+    temperaturaReal = input.temperature()
+    temperaturaMaximaregistada = input.temperature()
+    basic.clearScreen()
 })
 radio.onReceivedString(function (receivedString) {
     radio.setGroup(1)
     if (receivedString == "P") {
         basic.showString("Passos")
-        basic.pause(500)
-        basic.showNumber(passosdados)
-        basic.pause(2000)
     } else {
-        basic.showString("Temperatura")
-        basic.pause(100)
-        basic.showNumber(temperaturaMaximaregistada)
-        basic.pause(2000)
+        basic.showString("Tmax.")
+        basic.pause(200)
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -44,13 +38,10 @@ input.onButtonPressed(Button.B, function () {
 })
 let passos = 0
 let passosdados = 0
-let temperaturaReal = 0
 let temperaturaMaximaregistada = 0
-// Definido grupo de radio para 1 de forma a sincronizar apenas com esse grupo Radio.
-// Inicialização de variáveis globais.
-// Visualização de símbolo para verificação inicial.
-temperaturaMaximaregistada = -5
-temperaturaReal = -5
+let temperaturaReal = 0
+temperaturaReal = input.temperature()
+temperaturaMaximaregistada = input.temperature()
 radio.setGroup(1)
 passosdados = 0
 passos = 0
